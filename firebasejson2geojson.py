@@ -1,3 +1,5 @@
+#! usr/bin/env python
+
 from sys import argv
 from os.path import exists
 import simplejson as json 
@@ -13,3 +15,8 @@ geojson = {
     "features": [
     {"type": "Feature","properties": d, "geometry" : { "type": "MultiPoint", "coordinates": [d["lon"], d["lat"]]}} for d in data]
 }
+
+output = open(out_file, 'w')
+json.dump(geojson, output)
+
+print geojson
